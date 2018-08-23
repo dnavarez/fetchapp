@@ -17,7 +17,10 @@ class MenuCategoryCell: UITableViewCell {
     var viewModel: MenuCategoryViewModel! {
         didSet {
             titleLabel.text = viewModel.name
-            imgView.af_setImage(withURL: URL(string: (viewModel.imageUri))!)
+            
+            if viewModel.imageUri.count > 0 {
+                imgView.af_setImage(withURL: URL(string: (viewModel.imageUri))!)
+            }
         }
     }
 }

@@ -59,7 +59,9 @@ class MenuCategoryVC: UIViewController {
         RestApiServices(success: { (json) in
             let dict = json.dictionary
             if let data = dict["data"] as? NSArray {
-                self.menuCategoryViewModels = data.map({MenuCategoryViewModel.init(json: $0 as! [String : Any])})
+                
+                // Filter result that only have image url value
+                self.menuCategoryViewModels = data.map({MenuCategoryViewModel.init(json: $0 as! [String : Any])}).filter({$0.imageUri.count > 0})
                 
                 self.tableView.reloadData()
                 self.activityIndicator.stopAnimating()

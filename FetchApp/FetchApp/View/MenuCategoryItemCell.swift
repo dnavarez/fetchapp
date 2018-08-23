@@ -19,7 +19,9 @@ class MenuCategoryItemCell: UITableViewCell {
             titleLabel.text = viewModel.name
             priceLabel.text = "\(viewModel.price)"
             
-            imgView.af_setImage(withURL: URL(string: (viewModel.imageUri))!)
+            if viewModel.imageUri.count > 0 {
+                imgView.af_setImage(withURL: URL(string: (viewModel.imageUri))!)
+            }
         }
     }
 
